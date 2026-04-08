@@ -5,9 +5,6 @@ vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Opens a [S]mall [T]erminal
-vim.keymap.set('n', '<leader>st', '<cmd>botright 7split | terminal<CR>', { desc = 'Open 7-line terminal' })
-
 -- Diagnostics
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
