@@ -16,7 +16,6 @@ return { -- Collection of various small independent plugins/modules
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
       require('mini.comment').setup()
-
       require('mini.pairs').setup({
         ['('] = { action = 'open', pair = '()', neigh_pattern = '^[^\\]' },
         ['['] = { action = 'open', pair = '[]', neigh_pattern = '^[^\\]' },
@@ -30,9 +29,7 @@ return { -- Collection of various small independent plugins/modules
         ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = '^[^%a\\]', register = { cr = false } },
         ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '^[^\\]',   register = { cr = false } },
       })
-
       require('mini.sessions').setup()
-
       require('mini.indentscope').setup({
         draw = {
           delay = 100, 
@@ -46,6 +43,45 @@ return { -- Collection of various small independent plugins/modules
         symbol = '│', -- Symbol character
         options = { try_as_border = true },
       })
+
+      local starter = require('mini.starter')
+
+      -- PenVim ASCII Art (Standard Style)
+      local my_header = [[
+       ____         __     ___          
+      |  _ \ ___ _ _\ \   / (_)_ __ ___ 
+      | |_) / _ \ '_ \ \ / /| | '_ ` _ \
+      |  __/  __/ | | \ V / | | | | | | |
+      |_|   \___|_| |_|\_/  |_|_| |_| |_| <3
+
+      ]]
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'MiniStarterOpened',
+  callback = function()
+    -- Set fillchars to hide eob only in the current starter window
+    vim.wo.fillchars = 'eob: '
+  end,
+})
+      starter.setup({
+        header = my_header,
+
+        -- This changes the instruction text at the very bottom
+        footer = 'Type to filter  |  <CR> to select  |  <Esc> to quit',
+
+        sections = {
+          starter.sections.recent_files(5, false),
+          starter.sections.sessions(5, true),
+          starter.sections.builtin_actions(),
+        },
+
+        content_hooks = {
+          starter.gen_hook.adding_bullet('» '),
+          starter.gen_hook.aligning('center', 'center'),
+        },
+      })
+
+      vim.api.nvim_set_hl(0, 'MiniStarterHeader', {fg = '#5cf2a7'})
 
       vim.api.nvim_create_autocmd("BufWinEnter", {
         pattern = "*",

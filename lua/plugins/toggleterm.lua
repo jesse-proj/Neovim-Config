@@ -12,6 +12,7 @@ return {
     map("n", "<leader>t1", "<cmd>1ToggleTerm<CR>", { desc = "Toggle Terminal 1" })
     map("n", "<leader>t2", "<cmd>2ToggleTerm<CR>", { desc = "Toggle Terminal 2" })
     map("n", "<leader>t3", "<cmd>3ToggleTerm<CR>", { desc = "Toggle Terminal 3" })
+    map("n", "<leader>t4", "<cmd>4ToggleTerm<CR>", { desc = "Toggle Terminal 4" })
 
     map("t", "<leader>tt", "<cmd>wincmd q<CR>", { desc = "Hide Terminal" })
   end
