@@ -56,18 +56,19 @@ return { -- Collection of various small independent plugins/modules
 
       ]]
 
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'MiniStarterOpened',
-  callback = function()
-    -- Set fillchars to hide eob only in the current starter window
-    vim.wo.fillchars = 'eob: '
-  end,
-})
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'MiniStarterOpened',
+        callback = function()
+          -- Set fillchars to hide eob only in the current starter window
+          vim.wo.fillchars = 'eob: '
+        end,
+      })
+
       starter.setup({
         header = my_header,
 
         -- This changes the instruction text at the very bottom
-        footer = 'Type to filter  |  <CR> to select  |  <Esc> to quit',
+        footer = 'Type to filter  |  <CR> to select',
 
         sections = {
           starter.sections.recent_files(5, false),

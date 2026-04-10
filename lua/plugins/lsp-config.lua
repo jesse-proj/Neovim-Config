@@ -109,6 +109,7 @@ return {
           },
         },
 
+        intelephense = {}, -- If you installed intelephense
         cssls = {},
         -- gopls = {},
         pyright = {},
