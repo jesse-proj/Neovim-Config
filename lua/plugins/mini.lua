@@ -1,12 +1,12 @@
 local function setup_starter(starter)
       local header_text = [[
- ____         __     ___         
-|  _ \ ___ _ _\ \   / (_)_ __ ___ 
-| |_) / _ \ '_ \ \ / /| | '_ ` _ \
-|  __/  __/ | | \ V / | | | | | | |
-|_|   \___|_| |_|\_/  |_|_| |_| |_| <3
-Fafefifofuff ~ Jesse
-      ]]
+          ____         __     ___         
+   ____  |  _ \ ___ _ _\ \   / (_)_ __ ___ 
+  /|o  | | |_) / _ \ '_ \ \ / /| | '_ ` _ \
+ /o|  o| |  __/  __/ | | \ V / | | | | | | |
+/o_|_o_| |_|   \___|_| |_|\_/  |_|_| |_| |_| <3  
+Fafefifofuff ~ Jesse ᓚᘏᕐᐷ
+]]
 
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniStarterOpened',
@@ -18,7 +18,11 @@ Fafefifofuff ~ Jesse
       starter.setup({
         header = header_text,
 
-        footer = 'Type to filter  |  <CR> to select',
+        footer = [[
+                                   (o)(o)--. 
+Type to filter | <CR> to select     \../ (  )  
+-----------------------------------m-\/m--m'`--
+]],
 
         sections = {
           starter.sections.recent_files(5, false),
