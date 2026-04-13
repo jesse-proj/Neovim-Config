@@ -52,28 +52,6 @@ vim.o.scrolloff = 10
 
 vim.o.confirm = true
 
--- CUSTOM MINIMAL TABLINE (No Close Button)
-_G.SimpleTabline = function()
-  local s = ''
-  for i = 1, vim.fn.tabpagenr '$' do
-    local hl = (i == vim.fn.tabpagenr()) and '%#TabLineSel#' or '%#TabLine#'
-    s = s .. hl .. '%' .. i .. 'T'
-
-    local buflist = vim.fn.tabpagebuflist(i)
-    local winnr = vim.fn.tabpagewinnr(i)
-    local bufname = vim.fn.bufname(buflist[winnr])
-    local filename = bufname == '' and '[No Name]' or vim.fn.fnamemodify(bufname, ':t')
-
-    s = s .. '  ' .. filename .. '  '
-  end
-
-  s = s .. '%#TabLineFill#%T'
-
-  return s
-end
-
-vim.opt.tabline = '%!v:lua.SimpleTabline()'
-
 -- Configures vim diagnostics
 vim.diagnostic.config {
   update_in_insert = false,
@@ -93,3 +71,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function() vim.hl.on_yank() end,
 })
+
+vim.cmd('colorscheme material')

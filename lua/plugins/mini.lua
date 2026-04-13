@@ -1,11 +1,11 @@
 local function setup_starter(starter)
       local header_text = [[
-       ____         __     ___         
-      |  _ \ ___ _ _\ \   / (_)_ __ ___ 
-      | |_) / _ \ '_ \ \ / /| | '_ ` _ \
-      |  __/  __/ | | \ V / | | | | | | |
-      |_|   \___|_| |_|\_/  |_|_| |_| |_| <3
-
+ ____         __     ___         
+|  _ \ ___ _ _\ \   / (_)_ __ ___ 
+| |_) / _ \ '_ \ \ / /| | '_ ` _ \
+|  __/  __/ | | \ V / | | | | | | |
+|_|   \___|_| |_|\_/  |_|_| |_| |_| <3
+Fafefifofuff ~ Jesse
       ]]
 
       vim.api.nvim_create_autocmd('User', {
@@ -22,7 +22,6 @@ local function setup_starter(starter)
 
         sections = {
           starter.sections.recent_files(5, false),
-          starter.sections.sessions(5, true),
           starter.sections.builtin_actions(),
         },
 
@@ -32,36 +31,8 @@ local function setup_starter(starter)
         },
       })
 
-      vim.api.nvim_set_hl(0, 'MiniStarterHeader', {fg = '#5cf2a7'})
+      vim.api.nvim_set_hl(0, 'MiniStarterHeader', {link = 'String'})
 
-      vim.api.nvim_create_autocmd("BufWinEnter", {
-        pattern = "*",
-        callback = function(args)
-          -- Check if the current window is a floating window
-          local is_floating = vim.api.nvim_win_get_config(0).relative ~= ""
-
-          if is_floating then
-            vim.b[args.buf].miniindentscope_disable = true
-          end
-        end,
-      })
-end
-
-local function setup_sessions() 
-      vim.keymap.set('n', '<leader>wsl', function()
-        MiniSessions.write('Session.vim')
-      end, { desc = '[W]orkspace [S]ave [L]ocal'}) 
-
-      vim.keymap.set('n', '<leader>wsg', function()
-        MiniSessions.write('LastSession.vim')
-      end, { desc = '[W]orkspace [S]ave [G]lobal'}) 
-
-      vim.keymap.set('n', '<leader>wo', MiniSessions.select, { desc = '[W]orkspace [O]pen'})
-    
-      vim.keymap.set('n', '<leader>wk', function()
-        local name = vim.fn.input('Delete session: ')
-        if name ~= '' then MiniSessions.delete(name) end
-      end, { desc = '[W]orkspace [K]ill' })
 end
 
 local function setup_indentscope(indentscope)
@@ -75,11 +46,23 @@ local function setup_indentscope(indentscope)
           }),
         },
 
-        symbol = '│', -- Symbol character
+        symbol = '│', 
         options = { try_as_border = true },
       })
 
       vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', { link = 'Comment' })
+
+      vim.api.nvim_create_autocmd("BufWinEnter", {
+        pattern = "*",
+        callback = function(args)
+          -- Check if the current window is a floating window
+          local is_floating = vim.api.nvim_win_get_config(0).relative ~= ""
+
+          if is_floating then
+            vim.b[args.buf].miniindentscope_disable = true
+          end
+        end,
+      })
 end
 
 local function setup_statusline(statusline) 
@@ -101,16 +84,14 @@ return {
       require('mini.ai').setup { n_lines = 500 }
       require('mini.surround').setup()
       require('mini.comment').setup()
-      require('mini.splitjoin').setup() -- gS to toggle!
+      require('mini.splitjoin').setup() 
       require('mini.move').setup() 
       require('mini.pairs').setup()
-      require('mini.sessions').setup()
 
       local starter           = require('mini.starter')
       local indentscope       = require('mini.indentscope')
       local statusline        = require('mini.statusline')
 
-      setup_sessions()
       setup_starter(starter)
       setup_indentscope(indentscope)
       setup_statusline(statusline)
