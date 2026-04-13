@@ -15,10 +15,9 @@
   "oil.nvim": { "branch": "master", "commit": "0fcc83805ad11cf714a949c98c605ed717e0b83e" },
   "oxocarbon.nvim": { "branch": "main", "commit": "a7ba74849a00546a311f8c146320b433900393e7" },
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
+  "render-markdown.nvim": { "branch": "main", "commit": "54d4b5431e9634ee3d8d30784e017239b5b89d41" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "7ef4d6dccb78ee71e552bbd866176762ad328afa" },
-  "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
-  "toggleterm-manager.nvim": { "branch": "main", "commit": "31318b85a7cc20bf50ce32aedf4e835844133863" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }
