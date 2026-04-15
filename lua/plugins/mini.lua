@@ -36,7 +36,6 @@ Type to filter | <CR> to select     \../ (  )
       })
 
       vim.api.nvim_set_hl(0, 'MiniStarterHeader', {link = 'String'})
-
 end
 
 local function setup_indentscope(indentscope)
