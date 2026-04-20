@@ -1,12 +1,12 @@
 local function setup_starter(starter)
       local header_text = [[
-          ____         __     ___         
-   ____  |  _ \ ___ _ _\ \   / (_)_ __ ___ 
-  /|o  | | |_) / _ \ '_ \ \ / /| | '_ ` _ \
- /o|  o| |  __/  __/ | | \ V / | | | | | | |
-/o_|_o_| |_|   \___|_| |_|\_/  |_|_| |_| |_| <3  
-Fafefifofuff ~ Jesse ᓚᘏᕐᐷ
-]]
+██████╗ ███████╗███╗   ██╗██╗   ██╗██╗███╗   ███╗
+██╔══██╗██╔════╝████╗  ██║██║   ██║██║████╗ ████║
+██████╔╝█████╗  ██╔██╗ ██║██║   ██║██║██╔████╔██║
+██╔═══╝ ██╔══╝  ██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║     ███████╗██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝     ╚══════╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+Fafefifofuff ~ Jesse ᓚᘏᕐᐷ]]
 
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniStarterOpened',
@@ -18,11 +18,7 @@ Fafefifofuff ~ Jesse ᓚᘏᕐᐷ
       starter.setup({
         header = header_text,
 
-        footer = [[
-                                   (o)(o)--. 
-Type to filter | <CR> to select     \../ (  )  
------------------------------------m-\/m--m'`--
-]],
+        footer = 'Type to filter | <CR> to select',
 
         sections = {
           starter.sections.recent_files(5, false),
@@ -35,7 +31,12 @@ Type to filter | <CR> to select     \../ (  )
         },
       })
 
-      vim.api.nvim_set_hl(0, 'MiniStarterHeader', {link = 'String'})
+      vim.api.nvim_set_hl(0, 'MiniStarterHeader', {link = 'Keyword'})
+      vim.api.nvim_set_hl(0, 'MiniStarterItemPrefix', {link = 'Keyword'})
+      vim.api.nvim_set_hl(0, 'MiniStarterQuery', {link = 'Keyword'})
+      vim.api.nvim_set_hl(0, 'MiniStarterSection', {link = 'Function'})
+      vim.api.nvim_set_hl(0, 'MiniStarterItemBullet', {link = 'Function'})
+      vim.api.nvim_set_hl(0, 'MiniStarterFooter', {link = 'Comment'})
 end
 
 local function setup_indentscope(indentscope)
