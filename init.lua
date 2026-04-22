@@ -23,7 +23,7 @@ require('lazy').setup({
 -- Right now this is only for render-markdown.nvim but that might change in the future.
 -- Dependencies so far are the following:
 --    * pynvim (essential for all Nvim plugins that use Python)
---    * pylatexenc 
+--    * pylatexenc (for render-markdown's latex rendering)
 
 vim.env.PYTHONUTF8 = 1
 vim.env.PYTHONIOENCODING = "utf8"

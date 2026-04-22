@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.opt_local.wrap = true
         vim.opt_local.linebreak = true 
+        vim.opt_local.smoothscroll = true 
         
         local opts = { buffer = true, silent = true }
         vim.keymap.set('n', 'j', 'gj', opts)
