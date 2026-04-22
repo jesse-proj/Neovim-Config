@@ -19,7 +19,25 @@ require('lazy').setup({
   { import = 'colorschemes' },
 })
 
+-- == PYTHON STUFF ==
+-- Right now this is only for render-markdown.nvim but that might change in the future.
+-- Dependencies so far are the following:
+--    * pynvim (essential for all Nvim plugins that use Python)
+--    * pylatexenc 
+
+vim.env.PYTHONUTF8 = 1
+vim.env.PYTHONIOENCODING = "utf8"
+
+-- Dynamically find Python in the system PATH
+local python_path = vim.fn.exepath('python3')
+if python_path == '' then
+    python_path = vim.fn.exepath('python')
+end
+
+if python_path ~= '' then
+    vim.g.python3_host_prog = python_path
+end
+
 require('config.options')
 require('config.mappings')
-
 

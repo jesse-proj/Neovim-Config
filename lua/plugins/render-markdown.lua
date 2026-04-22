@@ -1,43 +1,38 @@
 return {
     'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, 
     opts = {
-            heading = {
-                -- Passing an empty table removes all heading background colors
-                backgrounds = {}, 
-            },
+        latex = {
+            enabled = true,
+            converter = 'latex2text',
+        },
+        
+        heading = {
+            icons = { '󰲠  ', '󰲢  ', '󰲤  ', '󰲦  ', '󰲨  ', '󰲪  ' },
+            sign = false,
+            backgrounds = {},
         },
 
-    config = function()
-        vim.api.nvim_set_hl(0, 'RenderMarkdownCode', { bg = 'NONE' })
-        require('render-markdown').setup({
-            latex = {
-                enabled = false, 
-            },
+        code = {
+            sign = false,
+            width = 'block', 
+            right_pad = 1,
+            border = 'thick',
+        },
 
-            heading = {
-                -- Force empty backgrounds for headings
-                backgrounds = {}, 
+        bullet = {
+            icons = { '●', '', '◆', '◇' },
+            right_pad = 1,
+        },
+        checkbox = {
+            unchecked = { icon = '󰄱 ' },
+            checked = { icon = '󰱒 ' },
+            custom = {
+                warning = { raw = '[-]', rendered = '󰥔 ', highlight = 'RenderMarkdownWarn' },
+                cake = { raw = '[c]', rendered = '󰃫', highlight = 'RenderMarkdownWarn' },
             },
-
-            code = {
-                style = 'language',
-                highlight = '', -- This kills the background highlight group for the header
-                highlight_inline = '', 
-            },
-
-            quote = {
-                -- Blockquotes (>) often have a grey background by default
-                icon = '▋',
-                repeat_linebreak = false,
-            },
-
-            sign = {
-                -- Turns off background colors in the left-hand sign column
-                enabled = false, 
-            }
-        })
-    end
+        },
+    }
 }
+
+
