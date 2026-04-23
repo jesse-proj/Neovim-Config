@@ -2,58 +2,71 @@ return {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, 
 
-    opts = {
-        enabled = true, 
-        file_types = { 'markdown', 'vimwiki', 'code' }, 
+    config = function()
+        opts = {
+            anti_conceal = {
+                enabled = false
+            },
 
-        latex = { enabled = true, converter = 'latex2text' },
+            enabled = true, 
+            file_types = { 'markdown', 'vimwiki', 'code' }, 
 
-        heading = {
-            icons = { '󰲠  ', '󰲢  ', '󰲤  ', '󰲦  ', '󰲨  ', '󰲪  ' },
-            sign = false,
-            backgrounds = {},
-        },
+            latex = { enabled = true, converter = 'latex2text' },
 
-        code = {
-            sign = false,
-            width = 'block', 
-            right_pad = 1,
-            border = 'thick',
-        },
+            anti_conceal = {
+                enabled = false
+            },
 
-        bullet = {
-            icons = { '●', '', '◆', '◇' },
-            right_pad = 1,
-            highlight = {
-                'Keyword',
-                'String',
-                'Function',
-                'RenderMarkdownWarn'
-            }
-        },
+            heading = {
+                icons = { '󰲠  ', '󰲢  ', '󰲤  ', '󰲦  ', '󰲨  ', '󰲪  ' },
+                sign = false,
+                backgrounds = {},
+            },
 
-        checkbox = {
-            unchecked = { icon = '󰄱 ' },
-            checked = { icon = '󰱒 ' },
-            custom = {
-                warning = {
-                    raw = '[-]',
-                    rendered = '󰥔 ',
-                    highlight = 'RenderMarkdownWarn'
-                },
+            code = {
+                sign = false,
+                width = 'block', 
+                right_pad = 1,
+                border = 'thick',
+            },
 
-                cake = {
-                    raw = '[c]',
-                    rendered = '󰃫',
-                    highlight = 'RenderMarkdownWarn'
-                },
+            bullet = {
+                icons = { '●', '', '◆', '◇' },
+                right_pad = 1,
+                highlight = {
+                    'Keyword',
+                    'String',
+                    'Function',
+                    'RenderMarkdownWarn'
+                }
+            },
 
-                sus = {
-                    raw = '[s]',
-                    rendered = 'ඞ',
-                    highlight = 'RenderMarkdownWarn'
-                },
-            }, 
-        },
-    }
+            checkbox = {
+                unchecked = { icon = '󰄱 ' },
+                checked = { icon = '󰱒 ' },
+                custom = {
+                    warning = {
+                        raw = '[-]',
+                        rendered = '󰥔 ',
+                        highlight = 'RenderMarkdownWarn'
+                    },
+
+                    cake = {
+                        raw = '[c]',
+                        rendered = '󰃫',
+                        highlight = 'RenderMarkdownWarn'
+                    },
+
+                    sus = {
+                        raw = '[s]',
+                        rendered = 'ඞ',
+                        highlight = 'RenderMarkdownWarn'
+                    },
+                }, 
+            },
+        }
+
+        require('render-markdown').setup(opts)
+    end
+
 }
