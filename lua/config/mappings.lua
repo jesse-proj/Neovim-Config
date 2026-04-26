@@ -28,19 +28,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
         vim.keymap.set('v', 'j', 'gj', opts)
         vim.keymap.set('v', 'k', 'gk', opts)
-
-        if _G.zen_active then return end
-        vim.schedule(function()
-            pcall(function() require("zen-mode").open() end)
-        end)
     end,
 })
 
-vim.api.nvim_create_autocmd("BufLeave", {
-    pattern = "*.md", 
-    callback = function()
-        if _G.zen_active then
-            pcall(function() require("zen-mode").close() end)
-        end
-    end,
-})

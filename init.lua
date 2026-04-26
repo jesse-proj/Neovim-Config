@@ -38,13 +38,6 @@ if python_path ~= '' then
     vim.g.python3_host_prog = python_path
 end
 
-require('telekasten').setup({
-    home = vim.fn.expand("C:/users/jians/desktop/SecondBrain"), 
-
-    command_palette_theme = "dropdown", 
-    show_tags_theme = "dropdown",
-})
-
 require('config.options')
 require('config.mappings')
 
