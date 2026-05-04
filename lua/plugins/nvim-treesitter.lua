@@ -17,7 +17,13 @@ return { -- Highlight, edit, and navigate code
         'query',
         'vim',
         'vimdoc',
-        'latex'
+        'latex',
+        'javascript',
+        'typescript',
+        'tsx',
+        'python',
+        'php',
+        'phpdoc'
       }
 
       require('nvim-treesitter').install(parsers)
